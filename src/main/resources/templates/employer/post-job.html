@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Post a Job</title>
+    <style>
+        body { font-family: Arial; background: #f0f4f8; padding: 40px; }
+        h2 { text-align: center; color: #0077cc; }
+        form {
+            background: white; max-width: 500px; margin: auto;
+            padding: 20px; border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        input, textarea, button {
+            display: block; width: 100%; padding: 10px;
+            margin: 10px 0; border-radius: 5px; border: 1px solid #ccc;
+        }
+        button {
+            background: #0077cc; color: white; border: none;
+        }
+        button:hover { background: #005fa3; }
+    </style>
+</head>
+<body>
+    <h2>Post a New Job</h2>
+    <form method="post" th:action="@{/employer/post-job}">
+        <input type="text" name="title" placeholder="Job Title"/>
+        <textarea name="description" placeholder="Job Description"></textarea>
+        <input type="text" name="location" placeholder="Location"/>
+        <input type="text" name="category" placeholder="Category"/>
+        <button type="submit">Post Job</button>
+    </form>
+</body>
+<script>
+  document.querySelector("form").addEventListener("submit", function (e) {
+    const title = this.title.value.trim();
+    const description = this.description.value.trim();
+    if (!title || !description) {
+      alert("Job title and description are required.");
+      e.preventDefault();
+    }
+  });
+</script>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <style>
+        body { font-family: Arial; background: #fdfdfd; padding: 50px; text-align: center; }
+        form {
+            background: white; padding: 20px; max-width: 400px; margin: auto;
+            border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, select, button {
+            margin: 10px 0; padding: 10px; width: 90%;
+            border-radius: 5px; border: 1px solid #ccc;
+        }
+        button {
+            background: #0077cc; color: white; border: none;
+        }
+        button:hover { background: #005fa3; }
+    </style>
+</head>
+<body>
+    <h2>Register</h2>
+    <form method="post" th:action="@{/register}">
+        <input type="text" name="username" placeholder="Username"/><br/>
+        <input type="email" name="email" placeholder="Email"/><br/>
+        <input type="password" name="password" placeholder="Password"/><br/>
+        <select name="role">
+            <option value="APPLICANT">Applicant</option>
+            <option value="EMPLOYER">Employer</option>
+        </select><br/>
+        <button type="submit">Register</button>
+    </form>
+</body>
+<script>
+  document.querySelector("form").addEventListener("submit", function (e) {
+    const username = this.username.value.trim();
+    const email = this.email.value.trim();
+    const password = this.password.value.trim();
+    if (!username || !email || !password) {
+      alert("All fields are required.");
+      e.preventDefault();
+    } else if (!email.includes("@")) {
+      alert("Enter a valid email.");
+      e.preventDefault();
+    }
+  });
+</script>
+
+</html>

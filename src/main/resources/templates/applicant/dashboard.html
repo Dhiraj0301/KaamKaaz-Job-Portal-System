@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Applicant Dashboard</title>
+    <style>
+        body { font-family: Arial; background: #f1faff; padding: 40px; }
+        h2 { text-align: center; color: #0077cc; }
+        .job {
+            background: white; max-width: 500px; margin: 15px auto;
+            padding: 15px; border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .job a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+        .job a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h2>Available Jobs</h2>
+    <div th:each="job : ${jobs}" class="job">
+        <p><a th:href="@{'/applicant/job/' + ${job.id}}" th:text="${job.title}"></a></p>
+    </div>
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const jobLinks = document.querySelectorAll(".job a");
+    jobLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        console.log("Navigating to job details...");
+      });
+    });
+  });
+</script>
+
+</html>

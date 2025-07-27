@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Applications</title>
+    <style>
+        body { font-family: Arial; background: #f8f8f8; padding: 40px; }
+        h2 { text-align: center; color: #0077cc; }
+        .application {
+            background: white; max-width: 500px; margin: 15px auto;
+            padding: 15px; border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h2>Received Applications</h2>
+    <div th:each="app : ${applications}" class="application">
+        <p><strong th:text="${app.applicant.username}"></strong> applied for <span th:text="${app.job.title}"></span></p>
+    </div>
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("Applications view loaded.");
+  });
+</script>
+
+</html>
